@@ -3,6 +3,8 @@ package roles;
 import databases.EmployeeUserDatabase;
 import generics.EmployeeUser;
 
+// Andrew :)
+
 public class AdminRole implements Role {
     private final EmployeeUserDatabase database;
 
