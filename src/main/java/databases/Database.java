@@ -27,8 +27,8 @@ import java.util.List;
 
 public abstract class Database<T> {
     /* Members */
-    private List<T> records = new ArrayList<>();
-    private final String filename;
+    protected List<T> records = new ArrayList<>();
+    protected final String filename;
 
     /* Constructor */
     public Database(String filename) {
