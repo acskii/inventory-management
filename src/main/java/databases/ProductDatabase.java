@@ -4,7 +4,7 @@
 */
 package databases;
 
-import entities.Product;
+import generics.Product;
 import java.io.*;
 import java.util.*;
 

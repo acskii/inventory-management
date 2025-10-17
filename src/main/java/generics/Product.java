@@ -2,7 +2,7 @@
 writers:
 Abdoalrahman khedr
 */
-package entities;
+package generics;
 import generics.Generic;
 
 public class Product implements Generic  {
