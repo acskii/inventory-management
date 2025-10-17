@@ -3,6 +3,8 @@ package databases;
 
 import java.io.*;
 import java.util.*;
+
+import generics.EmployeeUser;
 import generics.Generic;
 /*
   writers:
@@ -94,5 +96,12 @@ public abstract class GenericDatabase<T extends Generic> extends Database<T> {
     public void deleteRecord(String key){
         //iterates over records and delete the record who has this key
         this.records.removeIf((record) -> record.getSearchKey().equals(key));
+    }
+
+    @Override
+    public void insertRecord(T record) {
+        /* Inherited method didn't check for uniqueness of records */
+        if (record == null) return;
+        if (!contains(record.getSearchKey())) this.records.add(record);
     }
 }

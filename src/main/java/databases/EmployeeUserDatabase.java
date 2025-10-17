@@ -17,13 +17,6 @@ public class EmployeeUserDatabase extends GenericDatabase<EmployeeUser> {
     }
 
     @Override
-    public void insertRecord(EmployeeUser record) {
-        /* Inherited method didn't check for uniqueness of records */
-        if (record == null) return;
-        if (!contains(record.getSearchKey())) this.records.add(record);
-    }
-
-    @Override
     public EmployeeUser createRecordFrom(String line) {
         // Note:
         // EmployeeUser.lineRepresentation() returns:
