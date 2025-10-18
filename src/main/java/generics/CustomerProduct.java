@@ -43,7 +43,7 @@ public class CustomerProduct implements Generic {
     }
     @Override
     public String getSearchKey(){
-        return customerSSN;
+        return customerSSN + "," + productID + "," + purchaseDate.format(DATE_APPEAR);
 
     }
 
