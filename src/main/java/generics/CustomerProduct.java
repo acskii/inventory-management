@@ -1,4 +1,4 @@
-import generics.Generic;
+package generics;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 /*
@@ -16,7 +16,7 @@ public class CustomerProduct implements Generic {
         this.productID=productID;
         this.purchaseDate=purchaseDate;
     }
-    private static final DateTimeFormatter DATE_APPEAR = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+    public static final DateTimeFormatter DATE_APPEAR = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
     public String getCustomerSSN(){
         return customerSSN;

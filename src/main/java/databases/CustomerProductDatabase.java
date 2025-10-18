@@ -33,5 +33,6 @@ public class CustomerProductDatabase extends GenericDatabase<CustomerProduct> {
         record.setPaid(paid);
         return record;
     }
+}
 
 
