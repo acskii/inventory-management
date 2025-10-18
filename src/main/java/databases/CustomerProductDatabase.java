@@ -4,6 +4,9 @@ import generics.CustomerProduct;
 import java.io.*;
 import java.time.LocalDate;
 import java.util.*;
+/*
+by Hassan Mohamed
+ */
 
 
 public class CustomerProductDatabase extends GenericDatabase<CustomerProduct> {
