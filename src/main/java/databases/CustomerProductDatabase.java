@@ -17,6 +17,7 @@ public class CustomerProductDatabase extends GenericDatabase<CustomerProduct> {
 
     @Override
     public CustomerProduct createRecordFrom(String line) {
+        if (line == null) return null;
         String[] parts = line.split(",");
 
         if (parts.length < 4) {
