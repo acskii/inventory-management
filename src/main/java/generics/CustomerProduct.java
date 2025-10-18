@@ -1,6 +1,9 @@
 import generics.Generic;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+/*
+by Hassan Mohamed
+ */
 
 
 public class CustomerProduct implements Generic {
