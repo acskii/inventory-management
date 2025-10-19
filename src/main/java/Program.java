@@ -11,16 +11,16 @@ public class Program {
         System.out.println("--------");
 
         /* Add Test Employees */
-        admin.addEmployee("T100", "Andrew",
-                "test@gmail.com", "Alexandria", "123");
-        admin.addEmployee("T200", "Hassan",
-                "test2@gmail.com", "Alexandria", "1234");
-        admin.addEmployee("T300", "Ahmed",
-                "test3@gmail.com", "Alexandria", "12345");
+        admin.addEmployee("E100", "Andrew",
+                "test@gmail.com", "Alexandria", "01345678901");
+        admin.addEmployee("E200", "Hassan",
+                "test2@gmail.com", "Alexandria", "01345678901");
+        admin.addEmployee("E300", "Ahmed",
+                "test3@gmail.com", "Alexandria", "01345678901");
 
         /* Remove one of them */
         admin.removeEmployee("P200");   // Oops :P
-        admin.removeEmployee("T200");
+        admin.removeEmployee("E200");
 
         /* Print the remaining */
         for (var e : admin.getListOfEmployees()) System.out.println(e.lineRepresentation());
@@ -46,15 +46,15 @@ public class Program {
 
         /* Make some purchases */
         LocalDate today = LocalDate.now();
-        employee.purchaseProduct("C100", "P100", today);
-        employee.purchaseProduct("C200", "P200", today);
+        employee.purchaseProduct("0123456789", "P100", today);
+        employee.purchaseProduct("1023456789", "P200", today);
 
         /* Apply payment for one purchase */
-        employee.applyPayment("C100", today);
+        employee.applyPayment("0123456789", today);
 
         /* Try to return a product */
         LocalDate returnDate = today.plusDays(5);   // After 5 days
-        double refund = employee.returnProduct("C100", "P100", today, returnDate);
+        double refund = employee.returnProduct("0123456789", "P100", today, returnDate);
         System.out.println("Refund amount: " + refund);
 
         /* Print current state */
