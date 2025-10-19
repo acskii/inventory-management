@@ -10,7 +10,7 @@ public class CustomerProduct implements Generic {
     private final String customerSSN;
     private final String productID;
     private final LocalDate purchaseDate;
-    private boolean paid;
+    private boolean paid = false;
     public CustomerProduct(String customerSSN, String productID, LocalDate purchaseDate){
         this.customerSSN=customerSSN;
         this.productID=productID;
