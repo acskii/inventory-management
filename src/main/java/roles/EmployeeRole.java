@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
+import java.util.regex.Pattern;
 
 /*
     writers:
@@ -36,6 +37,10 @@ public class EmployeeRole implements Role {
 
   
     public void addProduct(String productId, String productName, String manufacturerName, String supplierName, int quantity, float price) {
+        if (!productId.startsWith("P")) {
+            System.out.println("[EmployeeRole]: Product ID must start with a P");
+            return;
+        }
         Product p = new Product(productId, productName, manufacturerName, supplierName, quantity, price);
         productsDatabase.insertRecord(p);
     }
@@ -54,6 +59,10 @@ public class EmployeeRole implements Role {
 
    
     public boolean purchaseProduct(String customerSSN, String productId, LocalDate purchaseDate) {
+        if (validateSSN(customerSSN) == null) {
+            System.out.println("[EmployeeRole]: customer SSN given is not valid");
+            return false;
+        }
         Product p = productsDatabase.getRecord(productId);
 
         if (p == null || p.getquantity() <= 0)
@@ -72,6 +81,10 @@ public class EmployeeRole implements Role {
     }
 
     public double returnProduct(String customerSSN, String productId, LocalDate purchaseDate, LocalDate returnDate) {
+        if (validateSSN(customerSSN) == null) {
+            System.out.println("[EmployeeRole]: customer SSN given is not valid");
+            return -1;
+        }
         if (returnDate.isBefore(purchaseDate)) return -1;
 
         Product p = productsDatabase.getRecord(productId);
@@ -94,7 +107,10 @@ public class EmployeeRole implements Role {
     }
 
     public boolean applyPayment(String customerSSN, LocalDate purchaseDate) {
-
+        if (validateSSN(customerSSN) == null) {
+            System.out.println("[EmployeeRole]: customer SSN given is not valid");
+            return false;
+        }
 
         String dateStr = purchaseDate.format(FMT);
         for (CustomerProduct x : customerProductDatabase.returnAllRecords()) {
@@ -114,5 +130,12 @@ public class EmployeeRole implements Role {
     public void logout() {
         productsDatabase.saveToFile();
         customerProductDatabase.saveToFile();
+    }
+
+    private String validateSSN(String customerSSN) {
+        /* Only valid if the customer SSN is made up of 10 numbers */
+        if (customerSSN.length() != 10) return null;
+        if (Pattern.matches("[0-9]{10}", customerSSN)) return customerSSN;
+        return null;
     }
 }
