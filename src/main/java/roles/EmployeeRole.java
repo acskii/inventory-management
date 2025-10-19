@@ -4,12 +4,18 @@ import databases.ProductDatabase;
 import databases.CustomerProductDatabase;
 import generics.Product;
 import generics.CustomerProduct;
-import java.time.*;
-import java.util.*;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import java.util.List;
 
 /*
     writers:
     Ahmed Sherif
+
+    editor:
+    Andrew Sameh
 */
 
 public class EmployeeRole implements Role {
@@ -37,13 +43,13 @@ public class EmployeeRole implements Role {
 
     public Product[] getListOfProducts() {
         List<Product> list = productsDatabase.returnAllRecords();
-        return list.toArray(new Product[list.size()]);
+        return list.toArray(new Product[0]);
     }
 
    
     public CustomerProduct[] getListOfPurchasingOperations() {
         List<CustomerProduct> list = customerProductDatabase.returnAllRecords();
-        return list.toArray(new CustomerProduct[list.size()]);
+        return list.toArray(new CustomerProduct[0]);
     }
 
    
@@ -55,7 +61,7 @@ public class EmployeeRole implements Role {
 
         p.setQuantity(p.getquantity() - 1);
 
-        CustomerProduct purchase = new CustomerProduct(customerSSN, productId, purchaseDate, false);
+        CustomerProduct purchase = new CustomerProduct(customerSSN, productId, purchaseDate);
 
         customerProductDatabase.insertRecord(purchase);
 
